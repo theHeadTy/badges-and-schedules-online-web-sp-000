@@ -32,7 +32,7 @@ end
 
 def printer
   badges = conference_badges
-  a = badges[:attendees] = batch_badge_creator(badges[:attendees])
+  badges[:attendees] = batch_badge_creator(badges[:attendees])
   badges[:room_assignments] = assign_rooms(badges[:attendees])
 
   puts "#{badges[:attendees].concat(badges[:room_assignments])}"
