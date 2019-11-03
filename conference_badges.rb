@@ -24,7 +24,7 @@ def assign_rooms(names)
   arr = []
   room_string = "You'll be assigned to room"
   names.select.with_index { |val, key|
-    arr << "Hello #{val}! #{room_string} #{key}"
+    arr << "Hello, #{val}! #{room_string} #{key}"
   }
   arr
 end
