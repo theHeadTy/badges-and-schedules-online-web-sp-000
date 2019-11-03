@@ -1,10 +1,10 @@
 def conference_badges
   {
     name: 'Ariel',
-    attendees: ["Edsger", "Ada", "Charles", "Alan", "Grace", "Linus", "Matz"],
-    badges: nil,
-    room_assignments: nil,
-    badges_and_room_assignments: nil
+    attendees: [],
+    badges: [],
+    room_assignments: [],
+    badges_and_room_assignments: []
   }
 end
 
@@ -21,22 +21,19 @@ def batch_badge_creator(names)
 end
 
 def assign_rooms(names)
-  arr = []
-  room_string = "You'll be assigned to room"
-  names.select.with_index { |val, key|
-    key += 1
-    arr << "Hello, #{val}! #{room_string} #{key}"
+  names.map.with_index { |val, key|
+    key += 1 
+    "Hello, #{val}! You'll be assigned to room #{key}!"
   }
-  arr
 end
 
-def printer
+def printer(names)
+
   badges = conference_badges
-  badges[:attendees] = batch_badge_creator(badges[:attendees])
-  badges[:room_assignments] = assign_rooms(badges[:attendees])
+  batches = batch_badge_creator(names)
+  rooms = assign_rooms(names)
 
-  puts "#{badges[:attendees].concat(badges[:room_assignments])}"
-
+  list = batches.concat(rooms).select { |val| puts val }
 end
 
-printer()
+printer(["Edsger", "Ada", "Charles", "Alan", "Grace", "Linus", "Matz"])
